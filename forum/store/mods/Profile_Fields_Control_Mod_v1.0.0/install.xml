@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml-stylesheet type="text/xsl" href="./modx.prosilver.en.xsl"?>
+<!--For security purposes, please check: http
+://www.phpbb.com/mods/ for the latest version of this MOD. Although MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD. No support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.3.xsd">
+	<header>
+		<license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
+		
+		<title lang="en">Profile Fields Control MOD</title>
+		<title lang="tr">Profil Alanları Kontrol Eklentisi</title>
+
+		<description lang="en">Adds an ACP module to activate and deactivate default profile fields. It can also display or display and require profile fields on registration screen. Also adds user permissions to hide default profile fields at UCP profile page. Users can be forced to fill required profile fields by redirecting to UCP profile page.</description>
+		<description lang="tr">Standart profil alanlarını yönetim panelinden açma kapatma seçeneği getirir, yönetim paneli ayarı ile standart profil alanları kayıtta gösterebilir ve zorunlu yapılabilir. Kullanıcı paneli profil sayfasında profil alanları gizleyebilmek için kullanıcı izinleri ekler. Kullanıcıları profil sayfasına yönlendirerek zorunlu profil alanlarının güncellemelerini sağlayabilir.</description>
+
+		<author-notes lang="en">I'd like to thank DavidIQ as part of this modification based on his Location on registration mod. ACP words module codes are used for ACP Profile fields controll module.</author-notes>
+		<author-notes lang="tr">Bu eklentide DavidIQ tarafından yazılan kayıtta yer sorma eklentisi kodları ve acp_words module phpBB3 kodları da kullanılmıştır. Teşekkürler.</author-notes>
+		
+		<author-group>
+			<author>
+				<realname></realname>
+				<username>mtrs</username>
+				<email>trst2007@gmail.com</email>
+			</author>
+		</author-group>
+		
+		<mod-version>1.0.0</mod-version>
+		
+		<installation>
+			<level>easy</level>
+			<time>900</time>
+			<target-version>3.0.6</target-version>
+		</installation>
+
+		<history>
+			<entry>
+				<date>2009-03-07</date>
+				<rev-version>0.0.1</rev-version>
+				<changelog lang="en">
+					<change>Initial release</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>Başlangıç sürümü</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-03-23</date>
+				<rev-version>0.0.2</rev-version>
+				<changelog lang="en">
+					<change>Birthday added</change>
+					<change>Require at registration ACP control option added</change>
+					<change>Mod name changed</change>
+					<change>Private message view support</change>
+					<change>Constants added to constants file</change>
+					<change>UMIL support with install script added</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>Doğum günü eklendi</change>
+					<change>Kayıtta zorunlu yönetim paneli seçeneği eklendi</change>
+					<change>Özel mesajda kontrol desteği</change>
+					<change>Eklenti adı değişti</change>
+					<change>Sabitler constants dosyasına eklendi</change>
+					<change>UMIL desteği ve kurulum kodu eklendi</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-05-31</date>
+				<rev-version>0.0.3</rev-version>
+				<changelog lang="en">
+					<change>subsilver2 support</change>
+					<change>ucp profile fields change user permissions added</change>
+					<change>bug fix in memberlist.php</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>subsilver2 desteği</change>
+					<change>profil alanları değiştirme izinleri eklendi</change>
+					<change>memberlist.php hata (bug) düzeltmesi</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-06-26</date>
+				<rev-version>0.0.4</rev-version>
+				<changelog lang="en">
+					<change>Bug fix in acp_profile_control.php info file</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>acp_profile_control.php info hata düzeltmesi</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-07-11</date>
+				<rev-version>0.0.5</rev-version>
+				<changelog lang="en">
+					<change>Require profile in profile option added</change>
+					<change>Redirect to profile to fill required options</change>
+					<change>Language file changes</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>profil alanları zorunlu olması</change>
+					<change>Kullanıcı paneline yönlendirerek profil alanları zorunlu güncelleme</change>
+					<change>Dil dosyası değişiklikleri</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-08-18</date>
+				<rev-version>0.0.6</rev-version>
+				<changelog lang="en">
+					<change>ACP module replaced with a module like custom profile fields module</change>
+					<change>Redirect to once feature added</change>
+					<change>Language file changes</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>Yönetim paneli modülü özel profil alanlarına benzer tarzda değiştirildi</change>
+					<change>Sadece bir kez yönlendirme seçeneği eklendi</change>
+					<change>Dil dosyası değişiklikleri</change>
+				</changelog>
+			</entry>
+			<entry>
+			<date>2009-08-23</date>
+				<rev-version>0.0.7</rev-version>
+				<changelog lang="en">						
+					<change>"Replace with" commands removed, functions added instead</change>
+					<change>Bug fix of birthday redirect</change>
+					<change>UMIL manual install script replaced with auto type.</change>
+					<change>Mod enable disable config field added</change>
+					<change>Register page required field waring place changed</change>
+					<change>Bug fix in memberlist_body</change>					
+				</changelog>
+				<changelog lang="tr">
+					<change>Değiştir komutları değiştirildi, fonksiyona taşındı</change>
+					<change>Doğum günü yönlendirmesinde hata düzeltmesi</change>
+					<change>UMIL manuel kurulum kodu otomatik kurulum dosyası ile değiştirildi</change>
+					<change>Eklenti aç kapa config değeri eklendi</change>
+					<change>Kayıt sayfasında doldurulması zorunlu yeri değişti</change>
+					<change>memberlist_body hata düzeltmesi</change>					
+				</changelog>
+			</entry>
+			<entry>
+			<date>2009-09-01</date>
+				<rev-version>0.0.8</rev-version>
+				<changelog lang="en">						
+					<change>Bug fix of ucp profile: fields doesn't show when mod disabled</change>
+					<change>Some enable controlls moved to function file</change>
+					<change>ucp_profile_profile_info.html and ucp_register.php edits changed to avoid conflicts with other previously installed mods</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>Profil sayfasında, eklenti kapalı iken alanların görülmemesi şeklinde hata düzeltmesi</change>
+					<change>Eklenti açık kapalı tipi kontroller fonksiyon dosyasına taşındı</change>
+					<change>ucp_profile_profile_info.html ve ucp_register.php dosya düzenlemeleri başka eklentilerle çatışmayacak şekilde değiştirildi</change>
+				</changelog>
+			</entry>
+			<entry>
+			<date>2009-09-05</date>
+				<rev-version>0.0.9</rev-version>
+				<changelog lang="en">						
+					<change>Bug fix of ucp profile: icq field doesn't, when mod disabled</change>
+					<change>Fixes to move code to function files</change>					
+				</changelog>
+				<changelog lang="tr">
+					<change>Eklenti kapalı olunca profil sayfasında icq görünmemesi hata düzeltmesi</change>
+					<change>Kodları fonksiyon dosyasına taşıma için düzeltmeler</change>
+				</changelog>
+			</entry>
+			<entry>
+			<date>2009-11-21</date>
+				<rev-version>1.0.0-RC1</rev-version>
+				<changelog lang="en">						
+					<change>Required field warning fixed in ucp_register file</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>Kayıtta gerekli alan uyarısı düzeltildi</change>
+				</changelog>
+			</entry>
+			<entry>
+			<date>2009-12-12</date>
+				<rev-version>1.0.0</rev-version>
+				<changelog lang="en">						
+					<change>Permission update for registered users to see profile fields at UCP</change>
+					<change>php notice bug fix at registration screen</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>Kayıtlı kullanıcıların kullanıcı panelinde profil alanları görmesi için izin güncellemesi</change>
+					<change>Kayıt ekranında php notice bug hata düzeltmesi</change>					
+				</changelog>
+			</entry>			
+		</history> 	
+		<link-group>				
+			<link type="template" href="./subsilver2.xml" lang="en">subsilver2</link>
+			<link type="template" href="./subsilver2.xml" lang="tr">subsilver2</link>
+			<link type="language" href="./tr.xml" lang="en">Turkish</link>
+			<link type="language" href="./tr.xml" lang="tr">Türkçe</link>
+		</link-group>		
+	</header>	
+	<action-group>
+		<copy>
+			<file from="root/styles/prosilver/template/registration_profile_options.html" to="styles/prosilver/template/registration_profile_options.html" />
+			<file from="root/language/en/mods/info_acp_profile_control.php" to="language/en/mods/info_acp_profile_control.php"></file>
+			<file from="root/language/en/mods/umil_profile_control_install.php" to="language/en/mods/umil_profile_control_install.php"></file>
+			<file from="root/language/en/mods/permissions_profile_control.php" to="language/en/mods/permissions_profile_control.php"></file>
+			<file from="root/adm/style/acp_profile_fields.html" to="adm/style/acp_profile_fields.html"></file>
+			<file from="root/includes/functions_profile_control.php" to="includes/functions_profile_control.php"></file>
+			<file from="root/includes/acp/acp_profile_control.php" to="includes/acp/acp_profile_control.php"></file>
+			<file from="root/includes/acp/info/acp_profile_control.php" to="includes/acp/info/acp_profile_control.php"></file>
+			<file from="root/install_profile_control.php" to="install_profile_control.php"></file>			
+			<file from="root/umil/*.*" to="umil/*.*" />
+		</copy>
+		<open src="ucp.php">	
+			<edit>
+				<find><![CDATA[require($phpbb_root_path . 'includes/functions_module.' . $phpEx);]]></find>
+				<action type="after-add"><![CDATA[//Begin: Profile Fields Control MOD
+include($phpbb_root_path . 'includes/functions_profile_control.' . $phpEx);
+//Begin: Profile Fields Control MOD]]></action>
+			</edit>									
+		</open>	
+		<open src="includes/functions.php">
+			<edit>
+				<find><![CDATA[	header('Pragma: no-cache');]]></find>
+				<action type="after-add"><![CDATA[	//Begin: Profile Fields Control MOD
+	if ((isset($config['pfcm_enable'])) ? $config['pfcm_enable'] && $config['ucp_prof_rem_enable'] && !$user->data['user_profile_reminder'] : false)
+	{
+		if (!function_exists('update_proofile_fields'))
+		{
+			include($phpbb_root_path . 'includes/functions_profile_control.' . $phpEx);
+		}
+		update_proofile_fields();
+	}
+	//End: Profile Fields Control MOD]]></action>	
+			</edit>
+		</open>
+		<open src="viewtopic.php">
+			<edit>
+				<find><![CDATA[include($phpbb_root_path . 'includes/bbcode.' . $phpEx);]]></find>
+				<action type="after-add"><![CDATA[//Begin: Profile Fields Control MOD
+include($phpbb_root_path . 'includes/functions_profile_control.' . $phpEx);
+//Begin: Profile Fields Control MOD]]></action>
+			</edit>		
+			<edit>
+				<find><![CDATA[	// Dump vars into template]]></find>
+				<action type="before-add"><![CDATA[	// Begin: Profile Fields Control MOD
+	profile_fields_variables($postrow, $user_cache[$poster_id]);
+	// End: Profile Fields Control MOD]]></action>
+			</edit>				
+		</open>		
+		<open src="memberlist.php">
+			<edit>
+				<find><![CDATA[include($phpbb_root_path . 'includes/functions_display.' . $phpEx);]]></find>
+				<action type="after-add"><![CDATA[// Begin: Profile Fields Control MOD
+include($phpbb_root_path . 'includes/functions_profile_control.' . $phpEx);
+// End: Profile Fields Control MOD]]></action>
+			</edit>		
+			<edit>
+				<find><![CDATA[		// Custom Profile Fields]]></find>
+					<action type="before-add"><![CDATA[		// Begin: Profile Fields Control MOD
+		$template->assign_vars(user_profile_fields($member, $user_id));
+		// End: Profile Fields Control MOD]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[		if (!empty($profile_fields['row']))]]></find>
+					<action type="before-add"><![CDATA[		// Begin: Profile Fields Control MOD           
+		$template->assign_vars(memberlist_profile_fields($member));
+		// End: Profile Fields Control MOD]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[				$memberrow = array_merge(show_profile($row), array(]]></find>
+					<action type="before-add"><![CDATA[				// Begin: Profile Fields Control MOD
+				$row['user_website'] = ($config['ucp_website'] || !$config['pfcm_enable']) ? $row['user_website'] : '';
+				$row['user_from'] = ($config['ucp_location'] || !$config['pfcm_enable']) ? $row['user_from'] : '';
+				// End: Profile Fields Control MOD]]></action>
+			</edit>			
+			<edit>
+				<find><![CDATA[}
+
+// Output the page]]></find>
+					<action type="before-add"><![CDATA[		// Begin: Profile Fields Control MOD
+		$template->assign_vars(array(
+			'S_WWW_ENABLED'			=> (($config['ucp_website'] && $config['pfcm_enable']) || !$config['pfcm_enable']) ? true : false,
+			'S_LOCATION_ENABLED'		=> (($config['ucp_location'] && $config['pfcm_enable']) || !$config['pfcm_enable']) ? true : false,
+			));
+		// End: Profile Fields Control MOD]]></action>
+			</edit>			
+		</open>
+		<open src="includes/ucp/ucp_profile.php">
+			<edit>
+				<find><![CDATA[					$error = validate_data($data, $validate_array);]]></find>
+					<action type="before-add"><![CDATA[					// Begin: Profile Fields Control MOD
+					ucp_validate_data($validate_array);
+					// End: Profile Fields Control MOD]]></action>
+			</edit>		
+
+			<edit>
+				<find><![CDATA[				// Get additional profile fields and assign them to the template block var 'profile_fields']]></find>
+					<action type="before-add"><![CDATA[				//Begin: Profile Fields Control MOD
+				$template->assign_vars(ucp_profile_fields());
+				//End: Profile Fields Control MOD]]></action>
+			</edit>
+
+		</open>
+		<open src="includes/ucp/ucp_pm_viewmessage.php">
+			<edit>
+				<find><![CDATA[	// Display not already displayed Attachments for this post, we already parsed them. ;)]]></find>
+					<action type="before-add"><![CDATA[	// Begin: Profile Fields Control MOD
+	$template->assign_vars(pm_view_profile_fields($user_info, $author_id));
+	// End: Profile Fields Control MOD]]></action>
+			</edit>				   
+		</open>
+		<open src="includes/ucp/ucp_register.php">
+			<edit>
+				<find><![CDATA[		// Check and initialize some variables if needed]]></find>
+				<action type="before-add"><![CDATA[		//Begin: Profile Fields Control MOD
+		ucp_register_data($data);
+		//End: Profile Fields Control MOD]]></action>
+			</edit>			
+			
+			<edit>
+				<find><![CDATA[			$error = validate_data($data, array(]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[$error = validate_data($data,]]></inline-find>
+					<inline-action type="after-add"><![CDATA[ array_merge(validate_profile_fields_register(), ]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<find><![CDATA[			));
+
+			if (!check_form_key('ucp_register'))]]></find>
+				<action type="before-add"><![CDATA[			//Begin: Profile Fields Control MOD
+			)
+			//End: Profile Fields Control MOD]]></action>
+			</edit>			
+	
+			<edit>
+				<find><![CDATA[					'user_inactive_time'	=> $user_inactive_time,
+				);]]></find>
+				<action type="after-add"><![CDATA[				//Begin: Profile Fields Control MOD
+				ucp_register_user_row($user_row, $data);
+				//End: Profile Fields Control MOD]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[		//
+		$user->profile_fields = array();]]></find>
+				<action type="before-add"><![CDATA[		//Begin: Profile Fields Control MOD
+		$template->assign_vars(ucp_register_template($data));
+		//End: Profile Fields Control MOD]]></action>
+			</edit>
+		</open>
+		<open src="includes/functions_user.php">
+			<edit>
+				<find><![CDATA[	// These are the additional vars able to be specified]]></find>
+				<action type="before-add"><![CDATA[	//Begin: Profile Fields Control MOD
+	if (!function_exists('register_user_function'))
+	{
+		include($phpbb_root_path . 'includes/functions_profile_control.' . $phpEx);
+	}
+	register_user_function($sql_ary, $user_row);
+	//End: Profile Fields Control MOD]]></action>
+			</edit>
+		</open>
+
+	<open src="includes/constants.php">
+      <edit>
+        <find><![CDATA[?>]]></find>
+        <action type="before-add"><![CDATA[//Begin: Profile Fields Control MOD
+define('PROFILE_FIELD_DISABLED', 0);
+define('PROFILE_FIELD_ENABLED', 1);
+define('PROFILE_DISPLAY_REGISTRATION', 2);
+define('PROFILE_REQUIRE_REGISTRATION', 3);
+//End: Profile Fields Control MOD]]></action>
+      </edit>
+    </open>		
+	
+		<open src="styles/prosilver/template/ucp_register.html">
+			<edit>
+				<find><![CDATA[	<dl>
+		<dt><label for="tz">{L_TIMEZONE}:</label></dt>
+		<dd><select name="tz" id="tz" tabindex="7" class="autowidth">{S_TZ_OPTIONS}</select></dd>
+	</dl>]]></find>
+				<action type="after-add"><![CDATA[	<!-- IF S_PFCM_ENABLED --><!-- INCLUDE registration_profile_options.html --><!-- ENDIF -->]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[		<dl><dd><strong>{L_ITEMS_REQUIRED}</strong></dd></dl>]]></find>
+				<action type="before-add"><![CDATA[		<!-- IF not (S_PFCM_ENABLED and S_PROFILE_OPTIONS) -->]]></action>
+				<action type="after-add"><![CDATA[		<!-- ENDIF -->]]></action>
+			</edit>		
+		</open>
+		<open src="styles/prosilver/template/ucp_profile_profile_info.html">
+			<edit>
+				<find><![CDATA[	<dl>
+		<dt><label for="icq">{L_UCP_ICQ}:</label></dt>]]></find>
+				<action type="before-add"><![CDATA[	<!-- IF S_USER_UCP_ICQ -->]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[		<dt><label for="icq">{L_UCP_ICQ}:</label></dt>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<dt><label for="icq">{L_UCP_ICQ}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_ICQ_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>				
+			<edit>
+				<find><![CDATA[			<dd><input type="text" name="icq" id="icq" maxlength="15" value="{ICQ}" class="inputbox" /></dd>
+		</dl>]]></find>
+				<action type="after-add"><![CDATA[	<!-- ENDIF -->
+	<!-- IF S_USER_UCP_AIM -->]]></action>
+			</edit>
+			
+			<edit>
+				<find><![CDATA[		<dt><label for="aim">{L_UCP_AIM}:</label></dt>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<dt><label for="aim">{L_UCP_AIM}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_AIM_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			
+			<edit>
+				<find><![CDATA[		<dd><input type="text" name="aim" id="aim" maxlength="255" value="{AIM}" class="inputbox" /></dd>
+	</dl>]]></find>
+				<action type="after-add"><![CDATA[	<!-- ENDIF -->
+	<!-- IF S_USER_UCP_MSNM -->]]></action>
+			</edit>
+			
+			
+			<edit>
+				<find><![CDATA[		<dt><label for="msn">{L_UCP_MSNM}:</label></dt>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<dt><label for="msn">{L_UCP_MSNM}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_MSNM_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<find><![CDATA[		<dd><input type="text" name="msn" id="msn" maxlength="255" value="{MSN}" class="inputbox" /></dd>
+	</dl>]]></find>
+				<action type="after-add"><![CDATA[	<!-- ENDIF -->
+	<!-- IF S_USER_UCP_YIM -->]]></action>
+			</edit>
+
+			<edit>
+				<find><![CDATA[		<dt><label for="yim">{L_UCP_YIM}:</label></dt>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<dt><label for="yim">{L_UCP_YIM}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_YIM_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<find><![CDATA[		<dd><input type="text" name="yim" id="yim" maxlength="255" value="{YIM}" class="inputbox" /></dd>
+	</dl>]]></find>
+				<action type="after-add"><![CDATA[	<!-- ENDIF -->
+	<!-- IF S_USER_UCP_JABBER -->]]></action>
+			</edit>
+
+			<edit>
+				<find><![CDATA[		<dt><label for="jabber">{L_UCP_JABBER}:</label></dt>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<dt><label for="jabber">{L_UCP_JABBER}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_JABBER_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<find><![CDATA[		<dd><input type="text" name="jabber" id="jabber" maxlength="255" value="{JABBER}" class="inputbox" /></dd>
+	</dl>]]></find>
+				<action type="after-add"><![CDATA[	<!-- ENDIF -->
+	<!-- IF S_USER_UCP_WEBSITE -->]]></action>
+			</edit>				
+			
+			<edit>
+				<find><![CDATA[		<dt><label for="website">{L_WEBSITE}:</label></dt>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<dt><label for="website">{L_WEBSITE}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_WEBSITE_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<find><![CDATA[		<dd><input type="text" name="website" id="website" maxlength="255" value="{WEBSITE}" class="inputbox" /></dd>
+	</dl>]]></find>
+				<action type="after-add"><![CDATA[	<!-- ENDIF -->
+	<!-- IF S_USER_UCP_LOCATION -->]]></action>
+			</edit>
+
+			<edit>
+				<find><![CDATA[		<dt><label for="location">{L_LOCATION}:</label></dt>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<dt><label for="location">{L_LOCATION}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_LOCATION_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<find><![CDATA[		<dd><input type="text" name="location" id="location" maxlength="255" value="{LOCATION}" class="inputbox" /></dd>
+	</dl>]]></find>
+				<action type="after-add"><![CDATA[	<!-- ENDIF -->	
+	<!-- IF S_USER_UCP_OCCUPATION -->]]></action>
+			</edit>
+
+			<edit>
+				<find><![CDATA[		<dt><label for="occupation">{L_OCCUPATION}:</label></dt>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<dt><label for="occupation">{L_OCCUPATION}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_OCCUPATION_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<find><![CDATA[		<dd><textarea name="occupation" id="occupation" class="inputbox" rows="3" cols="30">{OCCUPATION}</textarea></dd>
+	</dl>]]></find>
+				<action type="after-add"><![CDATA[	<!-- ENDIF -->	
+	<!-- IF S_USER_UCP_INTERESTS -->]]></action>
+			</edit>
+
+			<edit>
+				<find><![CDATA[		<dt><label for="interests">{L_INTERESTS}:</label></dt>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<dt><label for="interests">{L_INTERESTS}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_INTERESTS_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<find><![CDATA[		<dd><textarea name="interests" id="interests" class="inputbox" rows="3" cols="30">{INTERESTS}</textarea></dd>
+	</dl>]]></find>
+				<action type="after-add"><![CDATA[	<!-- ENDIF -->]]></action>
+			</edit>
+
+			<edit>
+				<find><![CDATA[			<dt><label for="bday_day">{L_BIRTHDAY}:</label><br /><span>{L_BIRTHDAY_EXPLAIN}</span></dt>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<dt><label for="bday_day">{L_BIRTHDAY}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_BIRTHDAY_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>			
+			
+		</open>
+		<open src="styles/prosilver/template/memberlist_body.html">
+			<edit>
+				<find><![CDATA[			<th class="info"><a href="{U_SORT_WEBSITE}#memberlist">{L_WEBSITE}</a>{L_COMMA_SEPARATOR}<a href="{U_SORT_LOCATION}">{L_LOCATION}</a></th>]]></find>
+				<action type="replace-with"><![CDATA[			<!-- IF  S_WWW_ENABLED or S_LOCATION_ENABLED --><th class="info"><!-- IF  S_WWW_ENABLED --><a href="{U_SORT_WEBSITE}#memberlist">{L_WEBSITE}</a><!-- IF S_LOCATION_ENABLED -->{L_COMMA_SEPARATOR}<!-- ENDIF --><!-- ENDIF --><!-- IF  S_LOCATION_ENABLED --><a href="{U_SORT_LOCATION}">{L_LOCATION}</a><!-- ENDIF --></th><!-- ENDIF -->]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[      <td class="info"><!-- IF memberrow.U_WWW or memberrow.LOCATION --><!-- IF memberrow.U_WWW --><div><a href="{memberrow.U_WWW}" title="{L_VISIT_WEBSITE}: {memberrow.U_WWW}">{memberrow.U_SHORT_WWW}</a></div><!-- ENDIF --><!-- IF memberrow.LOCATION --><div>{memberrow.LOCATION}</div><!-- ENDIF --><!-- ELSE -->&nbsp;<!-- ENDIF --></td>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<td class="info">]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- IF  S_WWW_ENABLED or S_LOCATION_ENABLED -->]]></inline-action>
+				</inline-edit>
+				<inline-edit>
+					<inline-find><![CDATA[</td>]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>	
+		</open>
+		<diy-instructions lang="en">Execute and delete /install_profile_control.php
+Enable and configure Profile fields controll MOD at
+ACP -> Users and Groups -> Profile fields control
+To change profile field fields permissions, go to "USERS AND GROUPS/Users' permissions/Profile/			
+		</diy-instructions>		
+		<diy-instructions lang="tr">/install_profile_control.php kurulum dosyasını çalıştırıp silin 
+Eklentiyi etkinleştirip ayarlarını yapın:
+Yönetim Paneli -> Kullanıcı ve Gruplar -> Profil alanları kontrol
+Profil alanları değiştirme izini ayarları, "KULLANICILAR VE GRUPLAR/Kullanıcıların izinleri/Profil/ kısmında ayar yapılmalı.		
+</diy-instructions>
+	</action-group>
+</mod>

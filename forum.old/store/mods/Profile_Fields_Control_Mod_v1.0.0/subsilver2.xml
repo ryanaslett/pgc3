@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml-stylesheet type="text/xsl" href="./modx.prosilver.en.xsl"?>
+<!--For security purposes, please check: http
+://www.phpbb.com/mods/ for the latest version of this MOD. Although MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD. No support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.3.xsd">
+	<header>
+		<license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
+		
+		<title lang="en">Profile Fields Control MOD</title>
+		<title lang="tr">Profil Alanları Kontrol Eklentisi</title>
+
+		<description lang="en">This file provides instructions for installing the template portions of this MOD. See the main install file for any additional information about the MOD.</description>
+		<description lang="tr">Bu dosya mod tema dosyası talimatlarını içerir. MOD kurulum talimatları hakkında ek bilgi almak için ana kurulum dosyası incelenmelidir.</description>		
+		
+		<author-group>
+			<author>
+				<realname></realname>
+				<username>mtrs</username>
+				<email>trst2007@gmail.com</email>
+			</author>
+		</author-group>
+		
+		<mod-version>1.0.0</mod-version>
+		
+		<installation>
+			<level>easy</level>
+			<time>180</time>
+			<target-version>3.0.6</target-version>
+		</installation>
+		<history>
+			<entry>
+				<date>2009-03-07</date>
+				<rev-version>0.0.1</rev-version>
+				<changelog lang="en">
+					<change>Initial release</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>Başlangıç sürümü</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-03-23</date>
+				<rev-version>0.0.2</rev-version>
+				<changelog lang="en">
+					<change>Birthday added</change>
+					<change>Require at registration ACP control option added</change>
+					<change>Mod name changed</change>
+					<change>Private message view support</change>
+					<change>Constants added to constants file</change>
+					<change>UMIL support with install script added</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>Doğum günü eklendi</change>
+					<change>Kayıtta zorunlu yönetim paneli seçeneği eklendi</change>
+					<change>Özel mesajda kontrol desteği</change>
+					<change>Eklenti adı değişti</change>
+					<change>Sabitler constants dosyasına eklendi</change>
+					<change>UMIL desteği ve kurulum kodu eklendi</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-05-31</date>
+				<rev-version>0.0.3</rev-version>
+				<changelog lang="en">
+					<change>subsilver2 support</change>
+					<change>ucp profile user permissions added</change>
+					<change>bug fix in memberlist.php</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>subsilver2 desteği</change>
+					<change>profil alanları izinleri eklendi</change>
+					<change>memberlist.php hata (bug) düzeltmesi</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-07-11</date>
+				<rev-version>0.0.5</rev-version>
+				<changelog lang="en">
+					<change>birthday added to include file</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>include dosyasına birthday eklendi</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-06-23</date>
+				<rev-version>0.0.7</rev-version>
+				<changelog lang="en">
+					<change>Register page required field waring place changed</change>
+					<change>Bug fix in memberlist_body</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>Kayıt sayfasında doldurulması zorunlu yeri değişti</change>
+					<change>memberlist_body hata düzeltmesi</change>					
+				</changelog>
+			</entry>
+			<entry>
+			<date>2009-09-01</date>
+				<rev-version>0.0.8</rev-version>
+				<changelog lang="en">						
+					<change>ucp_profile_profile_info.html and ucp_register.php edits changed to avoid conflicts with other previously installed mods</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>ucp_profile_profile_info.html ve ucp_register.php dosya düzenlemeleri başka eklentilerle çatışmayacak şekilde değiştirildi</change>
+				</changelog>
+			</entry>
+			<entry>
+			<date>2009-11-21</date>
+				<rev-version>1.0.0-RC1</rev-version>
+				<changelog lang="en">						
+					<change>Updated for 3.0.6</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>3.0.6 için güncellendi</change>
+				</changelog>
+			</entry>
+			<entry>
+			<date>2009-12-12</date>
+				<rev-version>1.0.0</rev-version>
+				<changelog lang="en">						
+					<change>Version update</change>
+				</changelog>
+				<changelog lang="tr">
+					<change>Sürüm güncellemesi</change>
+				</changelog>
+			</entry>			
+		</history>
+		<link-group>
+			<link type="parent" href="install.xml" lang="en">Main Install File</link>
+			<link type="parent" href="install.xml" lang="tr">Ana Kurulum Dosyası</link>
+		</link-group>		
+	</header>	
+	<action-group>
+		<copy>
+			<file from="root/styles/subsilver2/template/registration_profile_options.html" to="styles/subsilver2/template/registration_profile_options.html" />
+		</copy>	
+
+		<open src="styles/subsilver2/template/ucp_register.html">
+			<edit>
+				<find><![CDATA[<tr>
+	<td class="row1"><b class="genmed">{L_TIMEZONE}: </b></td>
+	<td class="row2"><select name="tz">{S_TZ_OPTIONS}</select></td>
+</tr>]]></find>
+				<action type="after-add"><![CDATA[<!-- IF S_PROFILE_OPTIONS --><!-- INCLUDE registration_profile_options.html --><!-- ENDIF -->]]></action>
+			</edit>	
+			<edit>
+				<find><![CDATA[	<tr>
+		<td class="row2" colspan="2"><span class="gensmall">{L_ITEMS_REQUIRED}</span></td>
+	</tr>]]></find>
+			<action type="before-add"><![CDATA[<!-- IF not (S_PFCM_ENABLED and S_PROFILE_OPTIONS) -->]]></action>
+			<action type="after-add"><![CDATA[<!-- ENDIF -->]]></action>
+			</edit>			
+		</open>
+		<open src="styles/subsilver2/template/ucp_profile_profile_info.html">
+			<edit>
+				<find><![CDATA[<tr> 
+	<td class="row1" width="35%"><b class="genmed">{L_UCP_ICQ}: </b></td>]]></find>
+				<action type="before-add"><![CDATA[<!-- IF S_USER_UCP_ICQ -->]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[	<td class="row1" width="35%"><b class="genmed">{L_UCP_ICQ}: </b></td>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<td class="row1" width="35%"><b class="genmed">{L_UCP_ICQ}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_ICQ_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>				
+			<edit>
+				<find><![CDATA[	<td class="row2"><input class="post" type="text" name="icq" size="30" maxlength="15" value="{ICQ}" /></td>
+</tr>]]></find>
+				<action type="after-add"><![CDATA[<!-- ENDIF -->
+<!-- IF S_USER_UCP_AIM -->]]></action>
+			</edit>
+			
+			<edit>
+				<find><![CDATA[	<td class="row1" width="35%"><b class="genmed">{L_UCP_AIM}: </b></td>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<td class="row1" width="35%"><b class="genmed">{L_UCP_AIM}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_AIM_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>				
+			<edit>
+				<find><![CDATA[	<td class="row2"><input class="post" type="text" name="aim" size="30" maxlength="255" value="{AIM}" /></td>
+</tr>]]></find>
+				<action type="after-add"><![CDATA[<!-- ENDIF -->
+<!-- IF S_USER_UCP_MSNM -->]]></action>
+			</edit>
+
+			<edit>
+				<find><![CDATA[	<td class="row1" width="35%"><b class="genmed">{L_UCP_MSNM}: </b></td>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<td class="row1" width="35%"><b class="genmed">{L_UCP_MSNM}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_MSNM_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>				
+			<edit>
+				<find><![CDATA[	<td class="row2"><input class="post" type="text" name="msn" size="30" maxlength="255" value="{MSN}" /></td>
+</tr>]]></find>
+				<action type="after-add"><![CDATA[<!-- ENDIF -->
+<!-- IF S_USER_UCP_YIM -->]]></action>
+			</edit>
+
+			<edit>
+				<find><![CDATA[	<td class="row1" width="35%"><b class="genmed">{L_UCP_YIM}: </b></td>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<td class="row1" width="35%"><b class="genmed">{L_UCP_YIM}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_YIM_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>				
+			<edit>
+				<find><![CDATA[	<td class="row2"><input class="post" type="text" name="yim" size="30" maxlength="255" value="{YIM}" /></td>
+</tr>]]></find>
+				<action type="after-add"><![CDATA[<!-- ENDIF -->
+<!-- IF S_USER_UCP_JABBER -->]]></action>
+			</edit>			
+
+			<edit>
+				<find><![CDATA[	<td class="row1" width="35%"><b class="genmed">{L_UCP_JABBER}: </b></td>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<td class="row1" width="35%"><b class="genmed">{L_UCP_JABBER}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_JABBER_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>				
+			<edit>
+				<find><![CDATA[	<td class="row2"><input class="post" type="text" name="jabber" size="30" maxlength="255" value="{JABBER}" /></td>
+</tr>]]></find>
+				<action type="after-add"><![CDATA[<!-- ENDIF -->
+<!-- IF S_USER_UCP_WEBSITE -->]]></action>
+			</edit>	
+			
+			<edit>
+				<find><![CDATA[	<td class="row1" width="35%"><b class="genmed">{L_WEBSITE}: </b></td>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<td class="row1" width="35%"><b class="genmed">{L_WEBSITE}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_WEBSITE_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>				
+			<edit>
+				<find><![CDATA[	<td class="row2"><input class="post" type="text" name="website" size="30" maxlength="255" value="{WEBSITE}" /></td>
+</tr>]]></find>
+				<action type="after-add"><![CDATA[<!-- ENDIF -->
+<!-- IF S_USER_UCP_LOCATION -->	]]></action>
+			</edit>			
+	
+	
+			<edit>
+				<find><![CDATA[	<td class="row1" width="35%"><b class="genmed">{L_LOCATION}: </b></td>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<td class="row1" width="35%"><b class="genmed">{L_LOCATION}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_LOCATION_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>				
+			<edit>
+				<find><![CDATA[	<td class="row2"><input class="post" type="text" name="location" size="30" maxlength="100" value="{LOCATION}" /></td>
+</tr>]]></find>
+				<action type="after-add"><![CDATA[<!-- ENDIF -->	
+<!-- IF S_USER_UCP_OCCUPATION -->]]></action>
+			</edit>
+			
+			<edit>
+				<find><![CDATA[	<td class="row1" width="35%"><b class="genmed">{L_OCCUPATION}: </b></td>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<td class="row1" width="35%"><b class="genmed">{L_OCCUPATION}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_OCCUPATION_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>				
+			<edit>
+				<find><![CDATA[	<td class="row2"><textarea class="post" name="occupation" rows="3" cols="30">{OCCUPATION}</textarea></td>
+</tr>]]></find>
+				<action type="after-add"><![CDATA[<!-- ENDIF -->
+<!-- IF S_USER_UCP_INTERESTS -->]]></action>
+			</edit>
+
+			<edit>
+				<find><![CDATA[	<td class="row1" width="35%"><b class="genmed">{L_INTERESTS}: </b></td>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<td class="row1" width="35%"><b class="genmed">{L_INTERESTS}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_INTERESTS_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<find><![CDATA[	<td class="row2"><textarea class="post" name="interests" rows="3" cols="30">{INTERESTS}</textarea></td>
+</tr>]]></find>
+				<action type="after-add"><![CDATA[<!-- ENDIF -->]]></action>
+			</edit>			
+
+			<edit>
+				<find><![CDATA[		<td class="row1" width="35%"><b class="genmed">{L_BIRTHDAY}: </b><br /><span class="gensmall">{L_BIRTHDAY_EXPLAIN}</span></td>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<td class="row1" width="35%"><b class="genmed">{L_BIRTHDAY}:]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF UCP_BIRTHDAY_REQUIRE --> *<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>
+		</open>
+		<open src="styles/subsilver2/template/memberlist_body.html">
+			<edit>
+				<find><![CDATA[   <th nowrap="nowrap" width="11%"><a href="{U_SORT_WEBSITE}">{L_WEBSITE}</a></th>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<th nowrap="nowrap" width="11%">]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- IF  S_WWW_ENABLED -->]]></inline-action>
+				</inline-edit>
+				<inline-edit>
+					<inline-find><![CDATA[</th>]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+			<find><![CDATA[      <td class="gen" align="center">&nbsp;<!-- IF memberrow.U_WWW --><a href="{memberrow.U_WWW}">{WWW_IMG}</a><!-- ENDIF -->&nbsp;</td>]]></find>
+				<inline-edit>
+				<inline-find><![CDATA[<td class="gen" align="center">]]></inline-find>
+				<inline-action type="before-add"><![CDATA[<!-- IF  S_WWW_ENABLED -->]]></inline-action>
+			</inline-edit>
+			<inline-edit>
+				<inline-find><![CDATA[</td>]]></inline-find>
+				<inline-action type="after-add"><![CDATA[<!-- ENDIF -->]]></inline-action>
+				</inline-edit>
+			</edit>         
+		</open>
+		<diy-instructions lang="en">Purge cache after installation.</diy-instructions>
+		<diy-instructions lang="tr">Kurulum sonrası önbelleği temizleyin.</diy-instructions>
+		
+	</action-group>
+</mod>

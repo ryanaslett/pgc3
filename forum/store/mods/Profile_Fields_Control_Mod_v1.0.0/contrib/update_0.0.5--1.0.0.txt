@@ -1,0 +1,144 @@
+To update from 0.0.5 to 0.0.6
+uninstall includes/functions.php edits in 0.0.5
+install 0.0.6 edits
+----
+Then, copy included files over older ones
+    * root/language/en/mods/info_acp_profile_control.php,
+    * root/adm/style/acp_profile_fields.html,
+    * root/includes/acp/acp_profile_control.php,
+    * root/includes/acp/info/acp_profile_control.php,
+    * root/install_profile_control.php,
+	* root/umil/*.*
+----	
+Then run install script
+
+root/install_profile_control.php,
+
+-----
+To update from any version to 0.0.7
+uninstall file edits 
+and install 0.0.7 edits
+Then, copy included files over older ones
+
+run install script
+yoursite.com/phpbb3/install_profile_control.php
+******************
+To update from any version (except 0.0.7) to 0.0.8
+uninstall file edits 
+and install 0.0.8 edits
+Then, copy included files over older ones
+
+run install script
+yoursite.com/phpbb3/install_profile_control.php
+-----
+To update from any version from 0.0.7 to 0.0.8
+uninstall 
+includes/ucp/ucp_profile.php
+file edits 
+and install 0.0.8 edits
+Then, copy included files over older ones
+run install script
+yoursite.com/phpbb3/install_profile_control.php
+******************
+0.0.8 to 0.0.9 update
+Copy 
+root/includes/functions_profile_control.php
+over older one
+Run install script and do the edits below
+
+Open
+viewtopic.php
+Find
+[code]	$postrow = array_merge($postrow, profile_fields_variables($user_cache[$poster_id]));[/code]
+Replace with
+[code]	profile_fields_variables($postrow, $user_cache[$poster_id]);[/code]
+
+Open
+includes/ucp/ucp_profile.php
+Find
+[code]					$validate_array = ($config['pfcm_enable']) ? ucp_validate_data($validate_array) : $validate_array;[/code]
+Replace with
+[code]					ucp_validate_data($validate_array);[/code]
+
+Open
+includes/ucp/ucp_pm_viewmessage.php
+Find
+[code]	if ($config['pfcm_enable'])
+	{
+		$template->assign_vars(pm_view_profile_fields($user_info, $author_id));
+	}[/code]
+Replace with
+[code]	$template->assign_vars(pm_view_profile_fields($user_info, $author_id));[/code]
+
+Open
+includes/ucp/ucp_register.php
+Find
+[code]		if ($config['pfcm_enable'])
+		{
+			$data = array_merge($data, ucp_register_data());
+			$data['user_birthday'] = sprintf('%2d-%2d-%4d', $data['bday_day'], $data['bday_month'], $data['bday_year']);
+		}[/code]
+Replace with
+[code]		ucp_register_data($data);[/code]
+
+Find
+[code]				$user_row = ($config['pfcm_enable']) ? array_merge($user_row, ucp_register_user_row($data)) : $user_row;[/code]
+Replace with
+[code]				ucp_register_user_row($user_row, $data);[/code]
+
+Find
+[code]		if ($config['pfcm_enable'])
+		{
+			$template->assign_vars(ucp_register_template($data));
+		}[/code]
+Replace with
+[code]		$template->assign_vars(ucp_register_template($data));[/code]
+
+Open
+includes/functions_user.php
+Find
+[code]	if ($config['pfcm_enable'])
+	{
+		if (!function_exists('register_user_function'))
+		{
+			include($phpbb_root_path . 'includes/functions_profile_control.' . $phpEx);
+		}
+		$sql_ary = array_merge($sql_ary,  register_user_function($user_row));
+	}[/code]
+Replace with
+[code]	if (!function_exists('register_user_function'))
+	{
+		include($phpbb_root_path . 'includes/functions_profile_control.' . $phpEx);
+	}
+	register_user_function($sql_ary, $user_row);[/code]
+*****
+To update from 0.0.9 to 1.0.0-RC1
+Copy included files over older one
+styles/prosilver/template/registration_profile_options.html 
+styles/subsilver2/template/registration_profile_options.html 
+
+Open
+styles/prosilver/template/ucp_register.html
+Find
+		<dl><dd><strong>{L_ITEMS_REQUIRED}</strong></dd></dl>
+Before Add
+		<!-- IF not (S_PFCM_ENABLED and S_PROFILE_OPTIONS) -->
+After Add
+		<!-- ENDIF -->
+Open
+styles/subsilver2/template/ucp_register.html
+Find
+	<tr>
+		<td class="row2" colspan="2"><span class="gensmall">{L_ITEMS_REQUIRED}</span></td>
+	</tr>
+Before Add
+		<!-- IF not (S_PFCM_ENABLED and S_PROFILE_OPTIONS) -->
+After Add
+		<!-- ENDIF -->
+
+Run update script to update mod version info to 1.0.0-RC1
+***********
+To update from 1.0.0-RC1 to 1.0.0
+
+Run update script to update mod version info to 1.0.0 and permission update of Registered users to see profiles at UCP (control your permission after update)
+***********
